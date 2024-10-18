@@ -1,0 +1,103 @@
+.modal-overlay {
+  /* position: fixed; */
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  background: rgba(0, 0, 0, 0.5); /* Dim the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.modal-content {
+  background: white;
+  padding: 8px 80px;
+  border-radius: 12px; /* Increase the border-radius to give a smoother look */
+  width: 450px; /* Adjust width to match the modal content */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the modal itself */
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 100%; /* Ensure form takes the full width */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the start (left) */
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: black;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px; /* Match the input width to modal */
+  text-align: start; /* Align text to the start inside input */
+  margin-bottom: 60px;
+}
+
+.line {
+  width: calc(100% + 158px); /* Extend width of the line to match the padding */
+  border: 1px solid black;
+  margin-bottom: 10px;
+  margin-left: -80px; /* Shift the line to the left to start at the edge */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%; /* Ensure buttons fill the width */
+  max-width: 400px;
+}
+
+.cancel {
+  background: white; /* Keep red for cancel */
+  color: #ff4d4f;
+  border: 2px solid #ff9c9e;
+  padding: 8px 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.apply {
+  background: #8e44ad; /* Purple for save */
+  color: white;
+  border: none;
+  padding: 8px 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Optional hover effects */
+.cancel:hover {
+  background: #fac9c9;
+}
+
+.apply:hover {
+  background: #a569bd;
+}

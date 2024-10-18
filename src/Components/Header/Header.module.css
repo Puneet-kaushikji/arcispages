@@ -1,0 +1,158 @@
+.header {
+    display: flex;
+    width: 97%;
+    /* height: 75px;     */
+    gap: 20px;
+    color: #000;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.2);
+  }
+  .header *{color: inherit !important;}
+  .logoContainer {
+    display: flex;
+    gap: 16px;
+    margin: auto 0;
+    align-items: center;
+  }
+  .logoIcon,
+.logoText {
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.darkHeader .logoIcon,
+.darkHeader .logoText {
+  filter: brightness(0) invert(1); /* Change color to white */
+}
+  
+  .logoIcon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 24px;
+  }
+  
+  .logoText {
+    aspect-ratio: 4.44;
+    object-fit: contain;
+    object-position: center;
+    width: 102px;
+    align-self: start;
+    max-width: 100%;
+  }
+  
+  .navContainer {
+    display: flex;
+    align-items: center;
+    gap: 33px;
+    flex-wrap: wrap;
+  }
+  
+  .addDeviceButton {
+    align-self: start;
+    width: 150px;
+    border-radius: 8px;
+    background: var(--primary, #9234ea);
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+    min-height: 34px;
+    gap: 8px;
+    overflow: hidden;
+    color: #fcfcfc !important;
+    text-align: center;
+    padding: 5px 18px;
+    font: 800 14px/24px Inter, -apple-system, Roboto, Helvetica, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navItem {
+    display: flex;
+    gap: 10px;
+    color: #141e35;
+    white-space: nowrap;
+    font: 400 12px Inter, sans-serif;
+  }
+  
+  .navItemIcon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 35px;
+  }
+  
+  .navItemText {
+    margin: auto 0; 
+  }
+  
+  .darkHeader {
+    background-color: #333; /* Dark mode background */
+    color: white; /* Dark mode text color */
+  }
+  .themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    justify-content: start;
+    margin: auto 0;
+  }
+  
+  .themeText {
+    color: #141e35;
+    text-align: center;
+    margin: auto 0;
+    font: 400 12px/1 Inter, sans-serif;
+  }
+  
+  .toggleSwitch {
+    border-radius: 100px;
+    background-color: #9234ea;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 32px;
+    margin: auto 0;
+    padding: 1px;
+  }
+  
+  .toggleSwitchKnob {
+    background-color: #fcfcfc;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+  }
+  
+  .userInfo {
+    display: flex;
+    gap: 10px;
+    color: #65758b;
+    margin: auto 0;
+    font: 400 12px Inter, sans-serif;
+  }
+  
+  .userIcon {
+    aspect-ratio: 0.91;
+    object-fit: contain;
+    object-position: center;
+    width: 21px;
+  }
+  
+  .userName {
+    margin: auto 0;
+  }
+
+  /* Media Query */
+
+  @media (max-width: 991px) {
+    .header {
+      padding: 20px;
+    }
+    .navContainer {
+      max-width: 100%;
+    }
+    .navItem {
+      white-space: initial;
+    }
+  }

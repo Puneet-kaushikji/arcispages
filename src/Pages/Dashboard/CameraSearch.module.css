@@ -1,0 +1,93 @@
+.container {
+    align-self: end;
+    display: flex;
+    width: 920px;
+    max-width: 100%;
+    gap: 20px;
+    font-family: Inter, sans-serif;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 991px) {
+    .container {
+      margin-right: 3px;
+    }
+  }
+  
+  .cameraTypeWrapper {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .cameraTypeContainer {
+    border-radius: 10px;
+    background-color: #d8b4fe;
+    box-shadow: -12px -12px 20px rgba(255, 255, 255, 0.8);
+    display: flex;
+    gap: 40px;
+  }
+  
+  .myCameras {
+    border-radius: 10px;
+    background-color: #9234ea;
+    box-shadow: 5px 5px 24px rgba(166, 180, 200, 0.5);
+    color: #fcfcfc;
+    font-weight: 700;
+    line-height: 1;
+    padding: 11px 59px;
+  }
+  
+  @media (max-width: 991px) {
+    .myCameras {
+      padding: 0 20px;
+    }
+  }
+  
+  .sharedCameras {
+    color: #141e35;
+    font-weight: 400;
+    flex-grow: 1;
+    width: 128px;
+    margin: auto 0;
+  }
+  
+  .searchContainer {
+    border-radius: 10px;
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    color: #65758b;
+    font-weight: 400;
+    line-height: 1;
+    padding: 7px 10px;
+    border: 1px solid #65758b;
+  }
+  
+  .searchIcon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 22px;
+    border-radius: 4px;
+  }
+  
+  .searchText {
+    flex-basis: auto;
+    flex-grow: 1;
+    margin: auto 0;
+  }
+  
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
