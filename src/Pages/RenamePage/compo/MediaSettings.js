@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Text,
@@ -11,12 +11,24 @@ import {
   Collapse,
   TabPanel,
   Icon,
-} from '@chakra-ui/react';
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  Switch,
+} from "@chakra-ui/react";
 
 // Custom Arrow Icon (similar to the uploaded image)
 const CustomArrowIcon = ({ isOpen }) => (
   <Icon viewBox="0 0 24 24" boxSize={7} color="purple.400">
-    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+    <circle
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+    />
     <path
       d={isOpen ? "M8 14l4-4 4 4" : "M8 10l4 4 4-4"}
       fill="none"
@@ -52,19 +64,10 @@ const SectionHeader = ({ title, isOpen, onToggle }) => (
 
 // Main MediaSettings Component
 const MediaSettings = () => {
-  const [sections, setSections] = useState({
-    video: false,
-    image: false,
-    isp: false,
-    privacyMask: false,
-    osd: false,
-  });
+  const [activeSection, setActiveSection] = useState(null); // Single state to track the open section
 
   const toggleSection = (section) => {
-    setSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
+    setActiveSection((prev) => (prev === section ? null : section)); // Only one section can be open
   };
 
   return (
@@ -73,10 +76,10 @@ const MediaSettings = () => {
         {/* Video Setting */}
         <SectionHeader
           title="Video Setting"
-          isOpen={sections.video}
-          onToggle={() => toggleSection('video')}
+          isOpen={activeSection === "video"}
+          onToggle={() => toggleSection("video")}
         />
-        <Collapse in={sections.video} animateOpacity>
+        <Collapse in={activeSection === "video"} animateOpacity>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3} mt={2}>
             <FormControl>
               <FormLabel>Microphone Type</FormLabel>
@@ -156,40 +159,208 @@ const MediaSettings = () => {
         {/* Image Setting */}
         <SectionHeader
           title="Image Setting"
-          isOpen={sections.image}
-          onToggle={() => toggleSection('image')}
+          isOpen={activeSection === "image"}
+          onToggle={() => toggleSection("image")}
         />
-        <Collapse in={sections.image} animateOpacity>
-          <Text mt={4}>Image settings content goes here...</Text>
+        <Collapse in={activeSection === "image"} animateOpacity>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} mt={2}>
+            {/* Contrast */}
+            <FormControl>
+              <FormLabel>Contrast</FormLabel>
+              <Slider
+                defaultValue={50}
+                min={0}
+                max={100}
+                step={1}
+                focusThumbOnChange={false}
+                position="relative"
+              >
+                {/* Slider Track */}
+                <SliderTrack bg="gray.300" height="4px">
+                  <SliderFilledTrack bg="gray.500" />
+                </SliderTrack>
+
+                {/* Central Mark */}
+                {/* <Box
+                  position="absolute"
+                  top="50%"
+                  left="50%"
+                  transform="translate(-50%, -50%)"
+                  width="2px"
+                  height="12px"
+                  bg="purple.400"
+                /> */}
+
+                {/* Slider Thumb */}
+                <SliderThumb
+                  boxSize={3}
+                  bg="navy"
+                  _focus={{ boxShadow: "none" }}
+                  top="50%" // Align thumb to the center of the track
+                  // transform="translate(-50%,-50%)"
+                />
+              </Slider>
+            </FormControl>
+
+            {/* Brightness */}
+            <FormControl>
+              <FormLabel>Brightness</FormLabel>
+              <Slider
+                defaultValue={50}
+                min={0}
+                max={100}
+                step={1}
+                focusThumbOnChange={false}
+                position="relative"
+              >
+                {/* Slider Track */}
+                <SliderTrack bg="gray.300" height="4px">
+                  <SliderFilledTrack bg="gray.500" />
+                </SliderTrack>
+
+                {/* Central Mark */}
+
+                {/* Slider Thumb */}
+                <SliderThumb
+                  boxSize={3}
+                  bg="navy"
+                  _focus={{ boxShadow: "none" }}
+                  top="50%" // Align thumb to the center of the track
+                  // transform="translate(-50%,-50%)"
+                />
+              </Slider>
+            </FormControl>
+
+            {/* Saturation */}
+            <FormControl>
+              <FormLabel>Saturation</FormLabel>
+              <Slider
+                defaultValue={50}
+                min={0}
+                max={100}
+                step={1}
+                focusThumbOnChange={false}
+                position="relative"
+              >
+                {/* Slider Track */}
+                <SliderTrack bg="gray.300" height="4px">
+                  <SliderFilledTrack bg="gray.500" />
+                </SliderTrack>
+
+                {/* Central Mark */}
+
+                {/* Slider Thumb */}
+                <SliderThumb
+                  boxSize={3}
+                  bg="navy"
+                  _focus={{ boxShadow: "none" }}
+                  top="50%" // Align thumb to the center of the track
+                  // transform="translate(-50%,-50%)"
+                />
+              </Slider>
+            </FormControl>
+
+            {/* Hue */}
+            <FormControl>
+              <FormLabel>Hue</FormLabel>
+              <Slider
+                defaultValue={50}
+                min={0}
+                max={100}
+                step={1}
+                focusThumbOnChange={false}
+                position="relative"
+              >
+                {/* Slider Track */}
+                <SliderTrack bg="gray.300" height="4px">
+                  <SliderFilledTrack bg="gray.500" />
+                </SliderTrack>
+
+                {/* Central Mark */}
+
+                {/* Slider Thumb */}
+                <SliderThumb
+                  boxSize={3}
+                  bg="navy"
+                  _focus={{ boxShadow: "none" }}
+                  top="50%" // Align thumb to the center of the track
+                  // transform="translate(-50%,-50%)"
+                />
+              </Slider>
+            </FormControl>
+
+            {/* Sharpen */}
+            <FormControl>
+              <FormLabel>Sharpen</FormLabel>
+              <Slider
+                defaultValue={50}
+                min={0}
+                max={100}
+                step={1}
+                focusThumbOnChange={false}
+                position="relative"
+              >
+                {/* Slider Track */}
+                <SliderTrack bg="gray.300" height="4px">
+                  <SliderFilledTrack bg="gray.500" />
+                </SliderTrack>
+
+                {/* Central Mark */}
+
+                {/* Slider Thumb */}
+                <SliderThumb
+                  boxSize={3}
+                  bg="navy"
+                  _focus={{ boxShadow: "none" }}
+                  top="50%" // Align thumb to the center of the track
+                  // transform="translate(-50%,-50%)"
+                />
+              </Slider>
+            </FormControl>
+
+            {/* Flip and Mirror Toggles */}
+            <SimpleGrid columns={2} spacing={4} mt={4}>
+              <FormControl display="flex" alignItems="center">
+                <FormLabel mb="0">Flip</FormLabel>
+                <Switch colorScheme="green" defaultChecked />
+              </FormControl>
+
+              <FormControl display="flex" alignItems="center">
+                <FormLabel mb="0">Mirror</FormLabel>
+                <Switch colorScheme="gray" />
+              </FormControl>
+            </SimpleGrid>
+          </SimpleGrid>
         </Collapse>
 
         {/* ISP Setting */}
         <SectionHeader
           title="ISP"
-          isOpen={sections.isp}
-          onToggle={() => toggleSection('isp')}
+          isOpen={activeSection === "isp"}
+          onToggle={() => toggleSection("isp")}
         />
-        <Collapse in={sections.isp} animateOpacity>
+        <Collapse in={activeSection === "isp"} animateOpacity>
+        
           <Text mt={4}>ISP settings content goes here...</Text>
         </Collapse>
 
         {/* Privacy Mask Setting */}
         <SectionHeader
           title="Privacy Mask"
-          isOpen={sections.privacyMask}
-          onToggle={() => toggleSection('privacyMask')}
+          isOpen={activeSection === "privacyMask"}
+          onToggle={() => toggleSection("privacyMask")}
         />
-        <Collapse in={sections.privacyMask} animateOpacity>
+        <Collapse in={activeSection === "privacyMask"} animateOpacity>
           <Text mt={4}>Privacy mask content goes here...</Text>
         </Collapse>
 
         {/* OSD Setting */}
         <SectionHeader
           title="OSD"
-          isOpen={sections.osd}
-          onToggle={() => toggleSection('osd')}
+          isOpen={activeSection === "osd"}
+          onToggle={() => toggleSection("osd")}
         />
-        <Collapse in={sections.osd} animateOpacity>
+        <Collapse in={activeSection === "osd"} animateOpacity>
           <Text mt={4}>OSD settings content goes here...</Text>
         </Collapse>
       </Box>
