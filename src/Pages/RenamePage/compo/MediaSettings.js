@@ -322,12 +322,45 @@ const MediaSettings = () => {
             <SimpleGrid columns={2} spacing={4} mt={4}>
               <FormControl display="flex" alignItems="center">
                 <FormLabel mb="0">Flip</FormLabel>
-                <Switch colorScheme="green" defaultChecked />
+                <Switch
+                  size="md"
+                  sx={{
+                    // Customize the track (off state)
+                    ".chakra-switch__track": {
+                      bg: "gray.500", // Dark gray for the track when off
+                    },
+                    // Customize the track (on state)
+                    ".chakra-switch__track[data-checked]": {
+                      bg: "green.400", // Darker gray when the switch is on
+                    },
+                    // Customize the thumb
+                    ".chakra-switch__thumb": {
+                      bg: "white", // Thumb stays white
+                    },
+                  }}
+                  defaultChecked
+                />
               </FormControl>
 
               <FormControl display="flex" alignItems="center">
                 <FormLabel mb="0">Mirror</FormLabel>
-                <Switch colorScheme="gray" />
+                <Switch
+                  size="md"
+                  sx={{
+                    // Customize the track (off state)
+                    ".chakra-switch__track": {
+                      bg: "gray.500", // Dark gray for the track when off
+                    },
+                    // Customize the track (on state)
+                    ".chakra-switch__track[data-checked]": {
+                      bg: "green.400", // Darker gray when the switch is on
+                    },
+                    // Customize the thumb
+                    ".chakra-switch__thumb": {
+                      bg: "white", // Thumb stays white
+                    },
+                  }}
+                />
               </FormControl>
             </SimpleGrid>
           </SimpleGrid>
@@ -340,8 +373,44 @@ const MediaSettings = () => {
           onToggle={() => toggleSection("isp")}
         />
         <Collapse in={activeSection === "isp"} animateOpacity>
-        
-          <Text mt={4}>ISP settings content goes here...</Text>
+          <SimpleGrid columns={1} spacing={4} mt={4} px={4}>
+            {/* IR Mode Dropdown - Custom Width and Border */}
+            <FormControl width={{ base: "100%", md: "50%" }}>
+              <FormLabel>IR Mode</FormLabel>
+              <Select
+                defaultValue="smart"
+                border="1px solid"
+                borderColor="black.500"
+                borderRadius="md"
+              >
+                <option value="smart">Smart mode</option>
+                <option value="manual">Manual mode</option>
+                <option value="auto">Auto mode</option>
+              </Select>
+            </FormControl>
+
+            {/* Digital Width Dynamic Setting Switch */}
+            <FormControl display="flex" alignItems="center" mt={4}>
+              <FormLabel mb="0">Digital Width Dynamic Setting</FormLabel>
+              <Switch
+                size="md"
+                sx={{
+                  // Customize the track (off state)
+                  ".chakra-switch__track": {
+                    bg: "gray.500", // Dark gray for the track when off
+                  },
+                  // Customize the track (on state)
+                  ".chakra-switch__track[data-checked]": {
+                    bg: "green.400", // Darker gray when the switch is on
+                  },
+                  // Customize the thumb
+                  ".chakra-switch__thumb": {
+                    bg: "white", // Thumb stays white
+                  },
+                }}
+              />
+            </FormControl>
+          </SimpleGrid>
         </Collapse>
 
         {/* Privacy Mask Setting */}
@@ -351,7 +420,46 @@ const MediaSettings = () => {
           onToggle={() => toggleSection("privacyMask")}
         />
         <Collapse in={activeSection === "privacyMask"} animateOpacity>
-          <Text mt={4}>Privacy mask content goes here...</Text>
+          <Box m={4} display="flex" alignItems="center" gap={6}>
+            {/* Enable Privacy Mask Switch */}
+            <FormControl display="flex" alignItems="center">
+              <FormLabel htmlFor="privacy-mask-switch" mb="0">
+                Enable Privacy Mask
+              </FormLabel>
+              <Switch
+                id="privacy-mask-switch"
+                size="md"
+                sx={{
+                  // Customize the track (off state)
+                  ".chakra-switch__track": {
+                    bg: "gray.500", // Dark gray for the track when off
+                  },
+                  // Customize the track (on state)
+                  ".chakra-switch__track[data-checked]": {
+                    bg: "green.400", // Darker gray when the switch is on
+                  },
+                  // Customize the thumb
+                  ".chakra-switch__thumb": {
+                    bg: "white", // Thumb stays white
+                  },
+                }}
+              />
+            </FormControl>
+
+            {/* Privacy Mask Color Selector */}
+            <FormControl>
+              <Select
+                placeholder="Green"
+                sx={{
+                  border: "1px solid black", // Add 1px black border
+                }}
+              >
+                <option value="green">Green</option>
+                <option value="black">Black</option>
+                <option value="blue">Blue</option>
+              </Select>
+            </FormControl>
+          </Box>
         </Collapse>
 
         {/* OSD Setting */}
@@ -361,7 +469,84 @@ const MediaSettings = () => {
           onToggle={() => toggleSection("osd")}
         />
         <Collapse in={activeSection === "osd"} animateOpacity>
-          <Text mt={4}>OSD settings content goes here...</Text>
+          <Box
+            mt={4}
+            display="grid"
+            gridTemplateColumns="repeat(2, 1fr)"
+            gap={6}
+          >
+            {/* Date Time Overlay Toggle */}
+            <FormControl display="flex" alignItems="center">
+              <FormLabel htmlFor="datetime-overlay" mb="0">
+                Date Time Overlay
+              </FormLabel>
+              <Switch
+                id="datetime-overlay"
+                size="md"
+                sx={{
+                  ".chakra-switch__track": {
+                    bg: "gray.500",
+                  },
+                  ".chakra-switch__track[data-checked]": {
+                    bg: "green.400",
+                  },
+                  ".chakra-switch__thumb": {
+                    bg: "white",
+                  },
+                }}
+              />
+            </FormControl>
+
+            {/* Channel Name Overlay Toggle */}
+            <FormControl display="flex" alignItems="center">
+              <FormLabel htmlFor="channelname-overlay" mb="0">
+                Channel Name Overlay
+              </FormLabel>
+              <Switch
+                id="channelname-overlay"
+                size="md"
+                sx={{
+                  ".chakra-switch__track": {
+                    bg: "gray.500",
+                  },
+                  ".chakra-switch__track[data-checked]": {
+                    bg: "green.400",
+                  },
+                  ".chakra-switch__thumb": {
+                    bg: "white",
+                  },
+                }}
+              />
+            </FormControl>
+
+            {/* Date Format Dropdown */}
+            <FormControl>
+              <FormLabel>Date Format</FormLabel>
+              <Select
+                placeholder="DD-MM-YYYY"
+                sx={{
+                  border: "1px solid black",
+                }}
+              >
+                <option value="DD-MM-YYYY">DD-MM-YYYY</option>
+                <option value="MM-DD-YYYY">MM-DD-YYYY</option>
+              </Select>
+            </FormControl>
+
+            {/* Time Format Dropdown */}
+            <FormControl>
+              <FormLabel>Time Format</FormLabel>
+              <Select
+                placeholder="24 Hours"
+                sx={{
+                  border: "1px solid black",
+                }}
+              >
+                <option value="24-hours">24 Hours</option>
+                <option value="12-hours">12 Hours</option>
+              </Select>
+            </FormControl>
+          </Box>
         </Collapse>
       </Box>
     </TabPanel>

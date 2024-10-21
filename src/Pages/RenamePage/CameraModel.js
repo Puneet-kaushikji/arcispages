@@ -21,6 +21,8 @@ import Frame from "./Frame.svg"; // Ensure the path is correct
 import Vector from "./Vector.svg";
 import GeneralSettings from "./compo/GeneralSettings";
 import MediaSettings from "./compo/MediaSettings";
+import AISettings from "./compo/AiSetings";
+import NetworkSettings from "./compo/NetworkSettings";
 
 const CameraModel = ({ isOpen, onClose }) => {
   return (
@@ -112,12 +114,12 @@ const CameraModel = ({ isOpen, onClose }) => {
 
                 {/* AI Settings Tab */}
                 <TabPanel>
-                  <Text>AI Settings Content...</Text>
+                 <AISettings/>
                 </TabPanel>
 
                 {/* Network Settings Tab */}
                 <TabPanel>
-                  <Text>Network Settings Content...</Text>
+                 <NetworkSettings/>
                 </TabPanel>
 
                 {/* System Settings Tab */}
